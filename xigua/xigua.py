@@ -13,21 +13,12 @@ class XiguaFilter(filter.Filter):
         if request.query["app_name"] != "xigua":
             return False
 
-        print("Xigua")
-        return True
+        print("[xigua]")
 
-
-class XiguaV1Filter(XiguaFilter):
-
-    def analyze(self, request):
-        if not super().analyze(request):
-            return False
-
-        print("Xigua V1")
         return True
 
 
 def generate_filters():
     return [
-        XiguaV1Filter()
+        XiguaFilter()
     ]

@@ -13,7 +13,15 @@ class Request:
         if query == "":
             return None
 
-        return urllib.parse.parse_qs(query)
+        query_dict = urllib.parse.parse_qs(query)
+        if not query_dict:
+            return None
+
+        temp_query_dict = {}
+        for key in query_dict.keys():
+            temp_query_dict[key] = query_dict[key][0]
+
+        return temp_query_dict
 
     def _parse_post(self, transaction):
         request = transaction.find("request")
