@@ -4,10 +4,10 @@
 from filter import Filter
 
 
-class Toutiao_Filter(Filter):
+class ToutiaoFilter(Filter):
 
-    def do(self, get, post):
-        if (get["app_name"] != "toutiao"):
+    def do(self, request):
+        if request.query["app_name"] != "toutiao":
             return False
 
         print("Toutiao")

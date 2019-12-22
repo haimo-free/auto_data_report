@@ -2,7 +2,7 @@
 # coding=utf-8
 
 from abc import abstractmethod
-
+import define
 
 class Filter:
 
@@ -10,5 +10,5 @@ class Filter:
         pass
 
     @abstractmethod
-    def analyze(self, get, post):
+    def analyze(self, request):
         pass

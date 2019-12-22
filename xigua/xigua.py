@@ -6,8 +6,11 @@ import filter
 
 class XiguaFilter(filter.Filter):
 
-    def analyze(self, get, post):
-        if get["app_name"] != "xigua":
+    def analyze(self, request):
+        if not request or not request.valid():
+            return False
+
+        if request.query["app_name"] != "xigua":
             return False
 
         print("Xigua")
@@ -16,8 +19,8 @@ class XiguaFilter(filter.Filter):
 
 class XiguaV1Filter(XiguaFilter):
 
-    def analyze(self, get, post):
-        if not super().analyze(get, post):
+    def analyze(self, request):
+        if not super().analyze(request):
             return False
 
         print("Xigua V1")
