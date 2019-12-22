@@ -2,6 +2,7 @@
 # coding=utf-8
 
 import file
+from toutiao import toutiao
 from xigua import xigua
 
 filters = []
@@ -9,6 +10,11 @@ filters = []
 
 def generate_filter_list():
     temp_filters = xigua.generate_filters()
+    if temp_filters:
+        for item in temp_filters:
+            filters.append(item)
+
+    temp_filters = toutiao.generate_filters()
     if temp_filters:
         for item in temp_filters:
             filters.append(item)
@@ -30,10 +36,10 @@ def main():
         return False
 
     # 分析数据
-    # for request in request_items:
-    #     for _filter in filters:
-    #         if not _filter.analyze(request):
-    #             break
+    for request in request_items:
+        for _filter in filters:
+            if _filter.analyze(request):
+                break
 
 
 main()

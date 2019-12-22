@@ -29,5 +29,5 @@ class XiguaV1Filter(XiguaFilter):
 
 def generate_filters():
     return [
-        XiguaV1Filter
+        XiguaV1Filter()
     ]
