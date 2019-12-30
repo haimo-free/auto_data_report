@@ -4,9 +4,9 @@
 import file
 from toutiao import toutiao
 from xigua import xigua
+from lite import lite
 
 filters = []
-
 
 def generate_filter_list():
     temp_filters = xigua.generate_filters()
@@ -19,8 +19,13 @@ def generate_filter_list():
         for item in temp_filters:
             filters.append(item)
 
+    temp_filters = lite.generate_filters()
+    if temp_filters:
+        for item in temp_filters:
+            filters.append(item)
 
 def read_file():
+    # 根据文件位置进行修改
     filepath = "data.xml"
     return file.parse(filepath)
 

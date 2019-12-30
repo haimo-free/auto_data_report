@@ -4,7 +4,6 @@
 import json
 import time
 from timetransfer import TimeToDate
-
 from filter import Filter
 
 date = int(time.time())
@@ -109,7 +108,9 @@ class ToutiaoV1Filter(ToutiaoFilter):
             elif not label:
                 wrong_key.append("label")
         if lack_key or wrong_key:
-            print("头条V1.0 event=\"{event}\"：缺少关键字段：{key1}\n关键字段上报值错误：{key2}\nparam={param}\n".format(event=tag, key1=lack_key, key2=wrong_key, param=post))
+            cont = "event："+tag+"\n缺少关键字段："+str(lack_key)+"\n关键字段上报值错误："+str(wrong_key)+"\n"+str(post)+"\n\n"
+            with open(r"/Users/gengliting/Documents/埋点/测试结果/测试结果_头条v1.0_{0}.txt".format(date_str), 'a') as f:
+                f.write(cont)
 
 #        if post.get("value") == "1652163094023278":
 #            print(post,"\n")
@@ -249,8 +250,6 @@ class ToutiaoV3Filter(ToutiaoFilter):
 
         if lack_key or wrong_key:
             cont = "event："+tag+"\n缺少关键字段："+str(lack_key)+"\n关键字段上报值错误："+str(wrong_key)+"\n"+str(post)+"\n\n"
-            print(cont)
-
             with open(r"/Users/gengliting/Documents/埋点/测试结果/测试结果_头条v3.0_{0}.txt".format(date_str), 'a') as f:
                 f.write(cont)
 

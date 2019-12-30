@@ -1,7 +1,6 @@
 #!/usr/bin/python
 # coding=utf-8
-import request
-import urllib
+import urllib.parse
 from xml.etree import ElementTree
 import define
 
@@ -20,7 +19,6 @@ class Request:
         temp_query_dict = {}
         for key in query_dict.keys():
             temp_query_dict[key] = query_dict[key][0]
-
         return temp_query_dict
 
     def _parse_post(self, transaction):
